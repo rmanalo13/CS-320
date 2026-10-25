@@ -1,1 +1,9 @@
-# CS-320
+Portfolio Reflection
+How can I ensure that my code, program, or software is functional and secure?
+To ensure my software is functional and secure, I rely on a rigorous combination of defensive programming and comprehensive automated testing. By utilizing strict encapsulation and Java's built-in exception handling, I prevent invalid or malicious data from ever being instantiated. I validate functionality by writing extensive JUnit 5 test suites that target boundary conditions and negative test cases—deliberately attempting to break constraints to ensure the system fails safely. By establishing strict quantitative metrics, such as maintaining over 80% statement and branch test coverage, I can guarantee that every logical pathway and exception-handling fail-safe operates flawlessly before deployment.
+
+How do I interpret user needs and incorporate them into a program?
+Interpreting user needs requires treating project requirements and Software Requirement Specifications (SRS) as a definitive, non-negotiable checklist. I bridge the gap between a consumer's raw ideas and actionable developer tasks by defining clear acceptance criteria and establishing firm project boundaries to prevent scope creep. During development, I actively work to remove developer bias by anticipating how an unpredictable user might interact with the software, ensuring the final program not only works technically but actually solves the client's real-world problem.
+
+How do I approach designing software?
+My approach to designing software prioritizes efficiency, scalability, and early testing integration within the Software Development Life Cycle (SDLC). Rather than leaving quality assurance as a final phase, I design with testability in mind from the very beginning. I also focus on utilizing optimal internal data structures—such as implementing HashMaps to achieve O(1) time complexity for rapid data retrieval—to avoid technical debt. This ensures the architecture remains robust, easily maintainable, and performant as the application scales.
