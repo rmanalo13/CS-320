@@ -1,0 +1,54 @@
+Robert Manalo  
+Dr. Lewis 
+CS-320 
+October 18th, 2026 
+
+​​Summary and Reflections Report​: Project One 
+
+1. Summary 
+
+Unit Testing Approach  
+
+​​For Project One, I developed and tested three​ distinct back-end features: the ​Contact Service, Task Service, and Appointment Service. My​ unit testing approach for each of these features was highly systematic, functioning primarily through ​boundary value analysis and​ negative testing. Rather than only testing ​the "happy path" where data is​ entered correctly, I deliberately designed my JUnit tests to assault the constraints of each object. 
+
+This ​approach was​ strictly ​aligned with the software requirements. For​ example, the customer requirements dictated that a Task description could ​not exceed​ 50 characters, ​an Appointment date could not be in the past​, and a ​Contact phone number had to be exactly 10 digits​. I aligned my tests to these rules by supplying invalid Kingdom Hearts-themed data—such ​as creating an appointment date​ strictly ​in the past or​ passing "OrganizationXIII" to verify that the system correctly rejected strings over the 10-character limit. The ​overall quality of​ my ​JUnit tests is​ exceptionally high, which is quantitatively proven by my test coverage percentage. By running the VS Code Java coverage tool, I verified that my tests executed 80.96% of my total project code. Because my tests successfully triggered every conditional exception branch across all three services, I know my test suite is highly effective at catching defects before deployment. 
+
+Experience Writing JUnit Tests  
+
+​​My experience writing JUnit tests​ taught me how to enforce data integrity at the object level. To ensure my ​code was sound, I​ utilized ​encapsulation and Java’s built-in exception handling to reject bad data​ ​before an object could even be​ instantiated. For example, ​I ensured the​ Appointment class ​was technically sound by validating​ the ID directly in the constructor using the following lines of code:  
+
+​​if (appointmentId == null || appointmentId.length() > 10) { throw new​ IllegalArgumentException("Invalid ​ID: Must be non-null and​ 10 characters or less."); }.  
+
+I then verified this soundness in my JUnit tests with assertions like:  
+
+​​assertThrows(IllegalArgumentException.class, () -> { new Task​(null, "​Roxas", "Eat sea-salt ice cream​."); });. 
+
+To ensure my code was highly efficient, I avoided basic lists or arrays, which suffer from slow iteration times as data scales. Instead, I used Java’s HashMap data structure for all three services. This can be seen in my Task Service via the following lines of code:  
+
+​​private final Map<String, Task> taskDatabase​; and this.taskDatabase = new ​HashMap<>();.​  
+
+​​By using the unique string IDs as the hash keys, the​ code achieves ​O(1)​ ​time complexity​, meaning the application can retrieve, update, or delete records instantly regardless of how large the database grows. 
+
+2. Reflection 
+
+Testing Techniques  
+
+The main ​software testing techniques I employed​ in this project were ​dynamic testing, white-box testing​, and black-box testing. Dynamic testing is characterized by executing the actual code to observe its behavior. ​White-box testing focuses on the internal structure of the​ code, which I utilized by writing tests that explicitly targeted my internal if statements and data flows. Conversely, black-box testing focuses on verifying external functionality against a specification model without worrying about the internal code. I employed this by treating the assignment rubric as my specification model and writing tests to ensure the system behaved exactly as requested. 
+
+There are several software ​testing techniques I did not use​, notably static testing, integration testing, and User Acceptance Testing (UAT). Static testing is characterized by evaluating code or documents without executing them (such as using automated linters or formal peer reviews). Integration testing focuses on verifying whether different modules or external databases work correctly together. Finally, UAT involves releasing the software to a limited segment of real users to test in a live business environment. 
+
+In a practical software development environment, dynamic, white-box, and black-box techniques are used at the micro-level by engineers to ensure their specific functions operate flawlessly. Static testing is practically used in Continuous Integration (CI) pipelines to cheaply catch syntax vulnerabilities before compilation. Meanwhile, integration and UAT are macro-level techniques vital for ensuring that independently built modules connect seamlessly and actually solve the client's real-world problem. 
+
+Mindset  
+
+​​Acting as a software tester required me to adopt a mindset​ of extreme caution and deliberate skepticism. Instead of hoping the code would work, my goal was to find ways to break it. ​It was​ critical ​to appreciate the​ ​complexity and interrelationships of the code because​ a failure in one area cascades into others. For example, if I did not strictly validate the uniqueness of a Contact ID in the object class, the HashMap in the Contact Service class would silently overwrite existing data assigned to that null space, causing massive data corruption.. Exercising caution through rigorous boundary testing prevents these cascading failures. 
+
+I actively tried to limit bias in my review of the code by treating the rubric as a hostile checklist. Developer bias is a major concern when testing code, you wrote because a developer naturally tests the exact inputs they envisioned when writing the program (the "happy path"). If I had let bias take over, I might have only tested successful task creations with standard data. By forcing myself to input explicitly invalid values, like using an excessively long string such as 'Roxas of Organization XIII' for a name field, I removed my developer's bias and tested the software exactly how an unpredictable user might interact with it. 
+
+Ultimately, maintaining a disciplined ​commitment to quality is​ what separates ​professional software engineering​ from amateur coding. ​Cutting​ ​corners—such as skipping null​-check tests or using inefficient array structures, in the end this leads to ​technical debt. Technical debt is​ ​the cost of future rework caused by choosing an​ faster, easier, limited ​solution​ now instead of the more optimal approach. As a someone in the field, ​I plan to avoid technical debt by​ consistently utilizing optimal data structures like HashMaps from the very beginning, maintaining strict 80%+ test coverage, and treating requirements not just as suggestions, but as the foundational law of the software being built (​García, 2017).​ 
+
+​​References​ 
+
+​​García, B. (2017). Mastering software testing with​ JUnit ​5: Comprehensive​ ​guide to develop 	high quality Java applications. Packt Publishing​. 
+
+ 
