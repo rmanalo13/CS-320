@@ -1,4 +1,5 @@
 Portfolio Reflection
+
 How can I ensure that my code, program, or software is functional and secure?
 To ensure my software is functional and secure, I rely on a rigorous combination of defensive programming and comprehensive automated testing. By utilizing strict encapsulation and Java's built-in exception handling, I prevent invalid or malicious data from ever being instantiated. I validate functionality by writing extensive JUnit 5 test suites that target boundary conditions and negative test cases—deliberately attempting to break constraints to ensure the system fails safely. By establishing strict quantitative metrics, such as maintaining over 80% statement and branch test coverage, I can guarantee that every logical pathway and exception-handling fail-safe operates flawlessly before deployment.
 
